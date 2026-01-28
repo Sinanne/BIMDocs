@@ -10,7 +10,7 @@ export default function Header() {
         <header className="header-area flex items-center justify-between px-6 py-3 shadow-sm">
             <div className="flex items-center gap-3">
                 <Image
-                    src="/logo.png"
+                    src={`${process.env.NODE_ENV === 'production' ? '/BIMDocs' : ''}/logo.png`}
                     alt="BIMDocs Logo"
                     width={40}
                     height={40}
