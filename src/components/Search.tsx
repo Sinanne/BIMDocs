@@ -40,7 +40,7 @@ export default function Search() {
 
         const filtered = allTopics.filter(topic =>
             topic.title.toLowerCase().includes(value.toLowerCase()) ||
-            topic.content.toLowerCase().includes(value.toLowerCase())
+            (topic.content?.toLowerCase().includes(value.toLowerCase()) ?? false)
         );
 
         setResults(filtered.slice(0, 5)); // Limit to 5 results
@@ -100,7 +100,7 @@ export default function Search() {
                                 >
                                     <div className="font-medium text-sm">{result.title}</div>
                                     <div className="text-xs truncate opacity-70 mt-0.5">
-                                        {result.content.replace(/[#*`]/g, '').slice(0, 60)}...
+                                        {(result.content ?? '').replace(/[#*`]/g, '').slice(0, 60)}...
                                     </div>
                                 </Link>
                             </li>
