@@ -61,8 +61,8 @@ export default function Sidebar() {
                                         <button
                                             onClick={() => toggleModule(moduleId)}
                                             className={`w-full flex items-center justify-between text-left px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${hasActiveItem
-                                                    ? "text-[var(--text-primary)]"
-                                                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
+                                                ? "text-[var(--text-primary)]"
+                                                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
                                                 }`}
                                         >
                                             <span className="truncate pr-2">{module.title}</span>
@@ -85,8 +85,8 @@ export default function Sidebar() {
                                                             <Link
                                                                 href={`/docs/${item.slug}`}
                                                                 className={`block py-1.5 px-2 rounded-md text-sm transition-all ${isActive
-                                                                        ? "bg-blue-50 text-blue-600 font-medium dark:bg-blue-900/20 dark:text-blue-400 border-l-2 border-blue-500 rounded-l-none"
-                                                                        : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
+                                                                    ? "bg-[var(--bg-tertiary)] text-[var(--accent-color)] font-medium border-l-2 border-[var(--accent-color)] rounded-l-none"
+                                                                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
                                                                     }`}
                                                             >
                                                                 {item.title}

@@ -1,7 +1,7 @@
 export type DocTopic = {
     slug: string;
     title: string;
-    content: string; // Markdown content
+    content?: string;
 };
 
 export type DocModule = {

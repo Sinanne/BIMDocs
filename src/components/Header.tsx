@@ -37,7 +37,7 @@ export default function Header() {
                 </div>
                 <Link
                     href="/topics"
-                    className="p-2 rounded-lg text-gray-500 hover:bg-[var(--bg-hover)] hover:text-[var(--accent-color)] transition-colors"
+                    className="p-2 rounded-lg text-[var(--text-muted)] hover:bg-[var(--bg-hover)] hover:text-[var(--accent-color)] transition-colors"
                     title="Topic Map"
                 >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

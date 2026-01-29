@@ -15,7 +15,7 @@ export default function Breadcrumbs() {
     if (!breadcrumbs) return null;
 
     return (
-        <nav className="flex text-sm text-[var(--text-muted)] mb-6 overflow-x-auto whitespace-nowrap pb-2">
+        <nav className="breadcrumb-nav flex text-sm text-[var(--text-muted)] overflow-x-auto whitespace-nowrap">
             <ol className="flex items-center space-x-2">
                 <li>
                     <Link href="/" className="hover:text-[var(--accent-color)] transition-colors">
@@ -34,11 +34,18 @@ export default function Breadcrumbs() {
                     <span className="mx-1 text-gray-400">/</span>
                 </li>
                 <li>
-                    <span className="text-[var(--text-secondary)] font-medium">
+                    <span className="text-[var(--text-secondary)]">
                         {breadcrumbs.module}
                     </span>
                 </li>
-                {/* Topic title is usually displayed as the main h1, so we can omit it or show it as disabled text */}
+                <li>
+                    <span className="mx-1 text-gray-400">/</span>
+                </li>
+                <li>
+                    <span className="text-[var(--text-primary)] font-medium">
+                        {breadcrumbs.topic}
+                    </span>
+                </li>
             </ol>
         </nav>
     );

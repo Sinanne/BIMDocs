@@ -4,21 +4,21 @@
 /* Theme System using CSS Custom Properties */
 :root,
 [data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-hover: #e2e8f0;
+  --bg-primary: #fafaf9;
+  --bg-secondary: #f5f5f4;
+  --bg-tertiary: #e7e5e4;
+  --bg-hover: #d6d3d1;
 
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
+  --text-primary: #1c1917;
+  --text-secondary: #44403c;
+  --text-muted: #78716c;
 
-  --border-color: #e2e8f0;
-  --accent-color: #3b82f6;
-  --accent-hover: #2563eb;
+  --border-color: #e7e5e4;
+  --accent-color: #0369a1;
+  --accent-hover: #075985;
 
-  --header-bg: #ffffff;
-  --sidebar-bg: #f8fafc;
+  --header-bg: #fafaf9;
+  --sidebar-bg: #f5f5f4;
 }
 
 [data-theme="dark"] {
@@ -158,11 +158,21 @@ body {
   grid-row: 2;
   grid-column: 1;
   padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
   background-color: var(--bg-primary);
   transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  /* Center the wrapper */
+}
+
+.content-wrapper {
+  max-width: 850px;
+  /* Slightly wider to accommodate side padding */
+  width: 100%;
+  position: relative;
+  /* For absolutely positioned arrows */
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -267,15 +277,22 @@ body {
 
 /* Typography overrides for prose */
 .prose {
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  line-height: 1.75;
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
-.prose h4,
+.prose h4 {
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
 .prose strong {
   color: var(--text-primary);
+  font-weight: 600;
 }
 
 .prose p,
@@ -285,11 +302,43 @@ body {
 
 .prose a {
   color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 500;
 }
 
 .prose blockquote {
+  border-left-width: 4px;
   border-left-color: var(--accent-color);
-  color: var(--text-muted);
+  background-color: var(--bg-secondary);
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.prose th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.prose tr:nth-child(even) {
+  background-color: var(--bg-secondary);
 }
 
 /* Theme Toggle Button */
@@ -303,4 +352,113 @@ body {
 
 .theme-toggle:hover {
   background-color: var(--bg-hover);
+}
+
+/* Meta Bar Styles */
+.meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.like-button {
+  transition: all 0.2s ease;
+}
+
+.like-button.liked {
+  color: #ef4444;
+  /* light red */
+}
+
+/* Nav Arrow Styles */
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 40;
+  cursor: pointer;
+}
+
+.nav-arrow:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow.left {
+  left: calc(var(--sidebar-width) + 2rem);
+}
+
+.nav-arrow.right {
+  right: 2rem;
+}
+
+/* Tooltip Label */
+.nav-arrow-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.nav-arrow.left .nav-arrow-label {
+  left: 3.5rem;
+}
+
+.nav-arrow.right .nav-arrow-label {
+  right: 3.5rem;
+}
+
+.nav-arrow:hover .nav-arrow-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 1200px) {
+  .nav-arrow {
+    display: none;
+    /* Hide on smaller viewports to prevent overlap */
+  }
+}
+
+/* Hide scrollbar on breadcrumbs while maintaining scroll functionality */
+nav.breadcrumb-nav {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+nav.breadcrumb-nav::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
 }

@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div className="py-16 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         {/* Hero Section */}
         <div className="mb-16">
           <h1 className="page-title">
